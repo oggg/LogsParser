@@ -1,6 +1,6 @@
 ﻿@model LogsParser.Web.Models.SearchFormModel
 
-@using (Html.BeginForm("FileContent", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("StringMatches", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
