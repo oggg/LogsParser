@@ -2,6 +2,6 @@
 {
     public class LogsParserConstants
     {
-        public const string DefaultLogsFolder = @"D:\Logs";
+        public const string DefaultLogsFolder = @"D:\Logs\";
     }
 }
