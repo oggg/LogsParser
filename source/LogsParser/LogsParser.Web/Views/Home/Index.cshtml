@@ -7,7 +7,7 @@
         @Html.TextBoxFor(m => m.SearchPattern, new { placeholder = "Search Pattern", @class = "form-control"})
     </div>
     <div class="form-group">
-        @Html.DropDownList("Folder Selector",
+        @Html.DropDownList("FolderSelector",
                             new SelectList(Model.Directories),
                             "Select Folder",
                             new { @class = "form-control" })

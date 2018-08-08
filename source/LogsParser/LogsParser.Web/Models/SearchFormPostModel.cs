@@ -8,6 +8,6 @@ namespace LogsParser.Web.Models
         public string SearchPattern { get; set; }
 
         [Required]
-        public string SelectedDirectory { get; set; }
+        public string FolderSelector { get; set; }
     }
 }
