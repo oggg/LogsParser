@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Web;
 using System.Web.Caching;
+using LogsParser.Services.Contracts;
 
 namespace LogsParser.Services
 {
-    public class HttpCacheService
+    public class HttpCacheService : IHttpCacheService
     {
         private static readonly object LockObject = new object();
 
