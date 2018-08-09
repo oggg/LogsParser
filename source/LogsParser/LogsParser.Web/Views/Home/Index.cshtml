@@ -1,8 +1,7 @@
 ﻿@model LogsParser.Web.Models.SearchFormModel
 
-@using (Html.BeginForm("StringMatches", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.TextBoxFor(m => m.SearchPattern, new { placeholder = "Search Pattern", @class = "form-control"})
     </div>
@@ -14,7 +13,22 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit" />
+            <input id="submitButton" type="submit" class="btn btn-default" value="Submit" />
         </div>
     </div>
 }
+
+<script>
+    $(() => {
+        $('#submitButton').on('click', (event) => {
+            event.preventDefault();
+
+            $('form').serializeArray()
+                .map((v) => {
+                    localStorage.setItem(v.name, v.value);
+                });
+
+            location.href = location.href + 'Search/StringMatches'
+        });
+    })
+</script>
