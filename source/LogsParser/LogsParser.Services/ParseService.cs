@@ -12,32 +12,6 @@ namespace LogsParser.Services
 {
     public class ParseService : IParseService
     {
-        public ICollection<MatchModel> FindMatches(IEnumerable<string> fileCollection, string pattern)
-        {
-            var result = new List<MatchModel>();
-
-            foreach (var file in fileCollection)
-            {
-                var allFileLines = File.ReadAllLines(file);
-
-                for (int i = 0; i < allFileLines.Length; i++)
-                {
-                    var row = allFileLines[i].IndexOf(pattern, StringComparison.CurrentCultureIgnoreCase);
-                    if (row >= 0)
-                    {
-                        result.Add(new MatchModel()
-                        {
-                            Path = file,
-                            Col = i,
-                            Row = row
-                        });
-                    }
-                }
-            }
-
-            return result;
-        }
-
         public string GetPidContent(MatchModel matchModel)
         {
             var fileToParse = Path.Combine(LogsParserConstants.DefaultLogsFolder, matchModel.Path);
