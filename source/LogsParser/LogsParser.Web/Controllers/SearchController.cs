@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using LogsParser.Common;
 using LogsParser.Services.Contracts;
@@ -24,7 +26,7 @@ namespace LogsParser.Web.Controllers
         {
             var pidText = parseService.GetPidContent(matchModel);
 
-            return View(pidText);
+            return this.Content(pidText, "text/xml");
         }
     }
 }

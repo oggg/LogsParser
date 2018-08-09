@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using LogsParser.Common;
 using LogsParser.Services.Contracts;
@@ -43,8 +44,7 @@ namespace LogsParser.Services
 
             bool previousPidFound = false;
             bool nextPidFound = false;
-
-            var pidTextList = new LinkedList<string>();
+            
             var searchPatternLine = File.ReadLines(fileToParse).Skip(matchModel.Row).Take(1).First();
             var pidIndexOnSearchPatternLine = searchPatternLine.IndexOf(LogsParserConstants.PID);
 
@@ -60,7 +60,9 @@ namespace LogsParser.Services
                     nextPidFound = true;
                 }
             }
-            pidTextList.AddFirst(searchPatternLine);
+
+            var pidTextList = new LinkedList<string>();
+            pidTextList.AddFirst(searchPatternLine + Environment.NewLine);
 
             for (int i = 0; i < matchModel.Row; i++)
             {
@@ -77,7 +79,7 @@ namespace LogsParser.Services
                         previousPidFound = true;
                     }
 
-                    pidTextList.AddFirst(previousLine);
+                    pidTextList.AddFirst(previousLine + Environment.NewLine);
                 }
 
                 if (!nextPidFound)
@@ -89,14 +91,12 @@ namespace LogsParser.Services
                     }
                     else
                     {
-                        pidTextList.AddLast(nextLine);
+                        pidTextList.AddLast(nextLine + Environment.NewLine);
                     }
                 }
             }
 
-            // var pidText = HttpContext.Current.Server.HtmlEncode(string.Concat(pidTextList));
-            var pidText = string.Concat(pidTextList);
-            return pidText;
+            return string.Concat(pidTextList);
         }
     }
 }
