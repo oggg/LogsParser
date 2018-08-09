@@ -26,7 +26,7 @@ namespace LogsParser.Web.Controllers
         {
             var pidText = parseService.GetPidContent(matchModel);
 
-            return this.Content(pidText, "text/xml");
+            return this.Content(pidText, "text/plain");
         }
     }
 }
