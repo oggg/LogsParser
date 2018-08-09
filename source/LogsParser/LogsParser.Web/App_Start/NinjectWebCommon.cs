@@ -48,6 +48,7 @@ namespace LogsParser.Web.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                RegisterWithSignalr(kernel);
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -56,6 +57,11 @@ namespace LogsParser.Web.App_Start
                 kernel.Dispose();
                 throw;
             }
+        }
+
+        private static void RegisterWithSignalr(StandardKernel kernel)
+        {
+            GlobalHost.DependencyResolver = new NinjectSignalRDependencyResolver(kernel);
         }
 
         /// <summary>
@@ -67,6 +73,26 @@ namespace LogsParser.Web.App_Start
             kernel.Bind(b => b.From("LogsParser.Services")
                                 .SelectAllClasses()
                                 .BindDefaultInterface());
+        }
+    }
+
+    internal class NinjectSignalRDependencyResolver : DefaultDependencyResolver
+    {
+        private readonly IKernel kernel;
+
+        public NinjectSignalRDependencyResolver(IKernel kernel)
+        {
+            this.kernel = kernel;
+        }
+
+        public override object GetService(Type serviceType)
+        {
+            return kernel.TryGet(serviceType) ?? base.GetService(serviceType);
+        }
+
+        public override IEnumerable<object> GetServices(Type serviceType)
+        {
+            return kernel.GetAll(serviceType).Concat(base.GetServices(serviceType));
         }
     }
 }
