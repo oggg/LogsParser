@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5B00E0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogsParser.Common", "LogsParser.Common\LogsParser.Common.csproj", "{D0C025CB-A124-4C2E-B969-F4B049F0ECBA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{D1849626-C644-4C06-8244-F13898F11D7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogsParser.Models", "LogsParser.Models\LogsParser.Models.csproj", "{1538B0F9-82F8-4B15-B529-473329CC1090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{D0C025CB-A124-4C2E-B969-F4B049F0ECBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C025CB-A124-4C2E-B969-F4B049F0ECBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C025CB-A124-4C2E-B969-F4B049F0ECBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1538B0F9-82F8-4B15-B529-473329CC1090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1538B0F9-82F8-4B15-B529-473329CC1090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1538B0F9-82F8-4B15-B529-473329CC1090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1538B0F9-82F8-4B15-B529-473329CC1090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 		{53110065-7FBD-43DA-808F-B69B69399C70} = {95CAC33B-6F02-4575-9B21-1C13DB9BA113}
 		{B0A32C35-99F7-4414-A226-43562573D454} = {2753EBF9-7106-432B-B84B-C6017859A4FD}
 		{D0C025CB-A124-4C2E-B969-F4B049F0ECBA} = {5B00E0A1-F1E6-4175-9EB6-C317266E4888}
+		{1538B0F9-82F8-4B15-B529-473329CC1090} = {D1849626-C644-4C06-8244-F13898F11D7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B1043C7-1044-4784-A2B9-AD8C6796B579}

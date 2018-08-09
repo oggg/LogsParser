@@ -1,18 +1,30 @@
-﻿using System.Web.Mvc;
+﻿using System.IO;
+using System.Web.Mvc;
+using LogsParser.Common;
+using LogsParser.Services.Contracts;
 using LogsParser.Web.Models;
 
 namespace LogsParser.Web.Controllers
 {
     public class SearchController : Controller
     {
-        [HttpPost]
-        public ActionResult StringMatches(SearchFormPostModel model)
+        private readonly IParseService parseService;
+
+        public SearchController(IParseService parseService)
         {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            this.parseService = parseService;
+        }
+
+        public ActionResult StringMatches()
+        {
             return View();
+        }
+
+        public ActionResult GetPid(MatchModel matchModel)
+        {
+            var pidText = parseService.GetPidContent(matchModel);
+
+            return View(pidText);
         }
     }
 }
