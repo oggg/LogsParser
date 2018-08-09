@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LogsParser.Web.Models;
+﻿using LogsParser.Models;
 
 namespace LogsParser.Services.Contracts
 {

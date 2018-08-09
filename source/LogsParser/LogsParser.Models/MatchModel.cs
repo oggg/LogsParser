@@ -1,4 +1,4 @@
-﻿namespace LogsParser.Web.Models
+﻿namespace LogsParser.Models
 {
     public class MatchModel
     {

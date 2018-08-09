@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using LogsParser.Common;
 using LogsParser.Services.Contracts;
-using LogsParser.Web.Models;
+using LogsParser.Models;
 
 namespace LogsParser.Services
 {

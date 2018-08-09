@@ -4,7 +4,7 @@ using System.Text;
 using System.Web.Mvc;
 using LogsParser.Common;
 using LogsParser.Services.Contracts;
-using LogsParser.Web.Models;
+using LogsParser.Models;
 
 namespace LogsParser.Web.Controllers
 {
