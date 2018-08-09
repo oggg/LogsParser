@@ -197,7 +197,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\MatchHub.cs" />
-    <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\SearchFormModel.cs" />
     <Compile Include="Models\SearchFormPostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +242,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Search\StringMatches.cshtml" />
+    <Content Include="Views\Search\GetPid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,6 +264,10 @@
     <ProjectReference Include="..\LogsParser.Common\LogsParser.Common.csproj">
       <Project>{D0C025CB-A124-4C2E-B969-F4B049F0ECBA}</Project>
       <Name>LogsParser.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogsParser.Models\LogsParser.Models.csproj">
+      <Project>{1538B0F9-82F8-4B15-B529-473329CC1090}</Project>
+      <Name>LogsParser.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogsParser.Services\LogsParser.Services.csproj">
       <Project>{B0A32C35-99F7-4414-A226-43562573D454}</Project>
