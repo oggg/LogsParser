@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using LogsParser.Common;
+using LogsParser.Models;
 using LogsParser.Services.Contracts;
-using LogsParser.Web.Models;
 using Microsoft.AspNet.SignalR;
 
 namespace LogsParser.Web.Hubs
@@ -40,9 +40,10 @@ namespace LogsParser.Web.Hubs
                     var row = allFileLines[i].IndexOf(pattern, StringComparison.CurrentCultureIgnoreCase);
                     if (row >= 0)
                     {
-                        var model = new MatchModel()
+                        var model = new MatchModelHub()
                                         {
                                             Path = $"{folder}/{Path.GetFileName(file)}",
+                                            Filename = Path.GetFileNameWithoutExtension(file),
                                             Col = i,
                                             Row = row
                                         };
