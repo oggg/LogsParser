@@ -3,7 +3,7 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        @Html.TextBoxFor(m => m.SearchPattern, new { placeholder = "Search Pattern", @class = "form-control"})
+        @Html.TextBoxFor(m => m.SearchPattern, new { placeholder = "Search Pattern", @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.DropDownList("FolderSelector",
@@ -18,17 +18,4 @@
     </div>
 }
 
-<script>
-    $(() => {
-        $('#submitButton').on('click', (event) => {
-            event.preventDefault();
-
-            $('form').serializeArray()
-                .map((v) => {
-                    localStorage.setItem(v.name, v.value);
-                });
-
-            location.href = location.href + 'Search/StringMatches'
-        });
-    })
-</script>
+<script src="~/Scripts/form.js"></script>

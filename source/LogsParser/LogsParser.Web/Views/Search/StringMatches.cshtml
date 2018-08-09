@@ -3,29 +3,4 @@
 
 <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
 <script src="~/signalr/hubs" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        let folder = localStorage.getItem('FolderSelector');
-        let searchPattern = localStorage.getItem('SearchPattern');
-
-        if (folder && searchPattern) {
-            let matchCounter = 0;
-            let matchHubProxy = $.connection.matchHub;
-            matchHubProxy.client.addLinkForMatch = function (matchModel) {
-                matchCounter++;
-                let resultCounter = new Array(3 - matchCounter.toString().length).join(0);
-                resultCounter = resultCounter + matchCounter
-                let link = `<p>
-                                <a href="/search/getpid?path=${matchModel.Path}&row=${matchModel.Row}&col=${matchModel.Col}">
-                                    ${matchModel.Filename}_Match_${resultCounter}
-                                </a>
-                            </p>`;
-                $('#match-container').append(link);
-            }
-
-            $.connection.hub.start().done(function () {
-                matchHubProxy.server.findMatch(folder, searchPattern);
-            });
-        }
-    });
-</script>
+<script src="~/Scripts/communication.js"></script>
