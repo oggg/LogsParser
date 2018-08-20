@@ -18,8 +18,9 @@ namespace LogsParser.Services
 
             bool previousPidFound = false;
             bool nextPidFound = false;
-            
-            var searchPatternLine = File.ReadLines(fileToParse).Skip(matchModel.Row).Take(1).First();
+
+            var fileContent = File.ReadLines(fileToParse);
+            var searchPatternLine = fileContent.Skip(matchModel.Row).Take(1).First();
             var pidIndexOnSearchPatternLine = searchPatternLine.IndexOf(LogsParserConstants.PID);
 
             if (pidIndexOnSearchPatternLine >= 0)
@@ -47,7 +48,7 @@ namespace LogsParser.Services
 
                 if (!previousPidFound)
                 {
-                    var previousLine = File.ReadLines(fileToParse).Skip(matchModel.Row - i).Take(1).First();
+                    var previousLine = fileContent.Skip(matchModel.Row - i).Take(1).First();
                     if (previousLine.Contains(LogsParserConstants.PID))
                     {
                         previousPidFound = true;
@@ -58,7 +59,7 @@ namespace LogsParser.Services
 
                 if (!nextPidFound)
                 {
-                    var nextLine = File.ReadLines(fileToParse).Skip(matchModel.Row + i).Take(1).First();
+                    var nextLine = fileContent.Skip(matchModel.Row + i).Take(1).First();
                     if (nextLine.Contains(LogsParserConstants.PID))
                     {
                         nextPidFound = true;
