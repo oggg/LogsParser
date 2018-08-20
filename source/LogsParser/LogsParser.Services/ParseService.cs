@@ -38,6 +38,7 @@ namespace LogsParser.Services
 
             var pidTextList = new LinkedList<string>();
             pidTextList.AddFirst(searchPatternLine + Environment.NewLine);
+            var numberOfLines = fileContent.Count();
 
             for (int i = 0; i < matchModel.Row; i++)
             {
@@ -48,25 +49,39 @@ namespace LogsParser.Services
 
                 if (!previousPidFound)
                 {
-                    var previousLine = fileContent.Skip(matchModel.Row - i).Take(1).First();
-                    if (previousLine.Contains(LogsParserConstants.PID))
+                    if (matchModel.Row - i > 0)
+                    {
+                        var previousLine = fileContent.Skip(matchModel.Row - i).Take(1).First();
+                        if (previousLine.Contains(LogsParserConstants.PID))
+                        {
+                            previousPidFound = true;
+                        }
+
+                        pidTextList.AddFirst(previousLine + Environment.NewLine);
+                    }
+                    else
                     {
                         previousPidFound = true;
                     }
-
-                    pidTextList.AddFirst(previousLine + Environment.NewLine);
                 }
 
                 if (!nextPidFound)
                 {
-                    var nextLine = fileContent.Skip(matchModel.Row + i).Take(1).First();
-                    if (nextLine.Contains(LogsParserConstants.PID))
+                    if (matchModel.Row + i < numberOfLines)
                     {
-                        nextPidFound = true;
+                        var nextLine = fileContent.Skip(matchModel.Row + i).Take(1).First();
+                        if (nextLine.Contains(LogsParserConstants.PID))
+                        {
+                            nextPidFound = true;
+                        }
+                        else
+                        {
+                            pidTextList.AddLast(nextLine + Environment.NewLine);
+                        }
                     }
                     else
                     {
-                        pidTextList.AddLast(nextLine + Environment.NewLine);
+                        nextPidFound = true;
                     }
                 }
             }
